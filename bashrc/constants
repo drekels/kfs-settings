@@ -1,6 +1,17 @@
 
 # ---< COLORS >---
 
+export ECHO_BLACK='\033[30m'
+export ECHO_RED='\033[31m'
+export ECHO_GREEN='\033[32m'
+export ECHO_YELLOW='\033[33m'
+export ECHO_BLUE='\033[34m'
+export ECHO_PURPLE='\033[35m'
+export ECHO_CYAN='\033[36m'
+export ECHO_WHITE='\033[37m'
+export ECHO_BLACKBG='\033[40m'
+export ECHO_DEFAULT='\033[0m'
+
 export BLACK='\[\e[0;30m\]'
 export RED='\[\e[0;31m\]'
 export GREEN='\[\e[0;32m\]'
@@ -17,3 +28,9 @@ export DEFAULT='\[\e[0m\]'
 export PYTHON_SCRIPTS=$KFS_SETTINGS/python-scripts
 export RUN_PYTHON_SCRIPT="python2.7 $PYTHON_SCRIPTS/run_script.py"
 export KFS_LOCAL_SETTINGS=$KFS_SETTINGS/settings
+
+
+# ---< BASHRC VARAIBLES >---
+export KFS_LOCAL_ALIASES=$KFS_LOCAL_SETTINGS/local_aliases
+export KFS_BASHRC_SETTINGS=$KFS_LOCAL_SETTINGS/bashrc_settings
+

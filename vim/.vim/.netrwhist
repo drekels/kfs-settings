@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/spgear/runner_testing/testing/wild-small-nst-e/queue/yongt1-5/wildMetro-cli-fix/chimera/executionLogs'
+let g:netrw_dirhist_2='/home/steffk/scripts/bashrc'
+let g:netrw_dirhist_3='/spgear/scratch/zeph_auto-t2737'
