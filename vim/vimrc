@@ -551,14 +551,14 @@ set showtabline=1
 
 " `gf` jumps to the filename under the cursor.  Point at an import statement
 " and jump to it!
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
+" python << EOF
+" import os
+" import sys
+" import vim
+" for p in sys.path:
+"     if os.path.isdir(p):
+"         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+" EOF
 
 
 " Generate tags with: ctags -R -f ~/.vim/tags/python24.ctags /usr/lib/python2.4/
@@ -572,37 +572,36 @@ EOF
 
 " Execute a selection of code
 " Use VISUAL to select a range and then hit ctrl-e to execute it.
-python << EOL
-import vim
-def EvaluateCurrentRange():
-    eval(compile('\n'.join(vim.current.range),'','exec'),globals())
-EOL
+" python << EOL
+" import vim
+" def EvaluateCurrentRange():
+"    eval(compile('\n'.join(vim.current.range),'','exec'),globals())
+" EOL
 map <C-x> :py EvaluateCurrentRange()<cr>
 
-python << EOL
-import vim
-import re
-def createSphinxDocs():
-    variables = ''.join(vim.current.range)
-    indentationLevel = " "*(len(variables) - len(variables.strip()) + 4)
-    variables = variables[variables.index('(')+1:variables.index(')')]
-    variables = [var.strip() for var in variables.split(',') if var != "self"]
-    currentBuffer = vim.current.buffer
-    row, col = vim.current.window.cursor
-    currentBuffer[row:row] = [indentationLevel + "\"\"\""]
-    for var in reversed(variables):
-        var = re.sub("=\w+", "", var)
-        currentBuffer[row:row] = [indentationLevel + "    :type %s:" % var]
-        currentBuffer[row:row] = [indentationLevel + "    :param %s:" % var]
-        currentBuffer[row:row] = [""]
-    currentBuffer[row:row] = [indentationLevel + "\"\"\" "]
-    vim.current.window.cursor = (row+1,9+len(indentationLevel))
-
-EOL
+" python << EOL
+" import vim
+" import re
+" def createSphinxDocs():
+"     variables = ''.join(vim.current.range)
+"     indentationLevel = " "*(len(variables) - len(variables.strip()) + 4)
+"     variables = variables[variables.index('(')+1:variables.index(')')]
+"     variables = [var.strip() for var in variables.split(',') if var != "self"]
+"     currentBuffer = vim.current.buffer
+"     row, col = vim.current.window.cursor
+"     currentBuffer[row:row] = [indentationLevel + "\"\"\""]
+" "     for var in reversed(variables):
+"         var = re.sub("=\w+", "", var)
+"         currentBuffer[row:row] = [indentationLevel + "    :type %s:" % var]
+"         currentBuffer[row:row] = [indentationLevel + "    :param %s:" % var]
+"         currentBuffer[row:row] = [""]
+"     currentBuffer[row:row] = [indentationLevel + "\"\"\" "]
+"     vim.current.window.cursor = (row+1,9+len(indentationLevel))
+" 
+" EOL
 map <C-s> :py createSphinxDocs()<cr>
+ 
 
-
-" Show syntax highlighting groups for word under cursor
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -616,7 +615,3 @@ set go-=T
 set go-=L
 set go-=m
 
-endfunction
-
-command! LoadUnitTestFile :call <SID>LoadUnitTest()
-set guifont=Monospace\ 9
