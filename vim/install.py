@@ -17,13 +17,13 @@ def run():
             line = f.readline()
             if line[:-1] == '" --- KFS VIM SETTINGS ---':
                 return
+        make_backup(oldrc)
+        make_backup(olddotvim)
 
-    make_backup(oldrc)
     command = "cp {source}{sep}vimrc {path}".format(source=source, sep=os.sep, path=oldrc)
     subprocess.check_call(command, shell=True)
 
-    make_backup(olddotvim)
-    command = "cp {source}{sep}.vim {path}".format(source=source, sep=os.sep, path=olddotvim)
+    command = "cp -r {source}{sep}.vim {path}".format(source=source, sep=os.sep, path=olddotvim)
     subprocess.check_call(command, shell=True)
 
 def make_backup(path):
