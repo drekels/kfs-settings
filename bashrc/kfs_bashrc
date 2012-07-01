@@ -3,7 +3,7 @@
 KFS_BASHRC=$KFS_SETTINGS/bashrc
 
 source $KFS_BASHRC/constants
-source $KFS_SETTINGS/settings
+source $KFS_LOCAL_SETTINGS/bashrc_settings
 source $KFS_BASHRC/git_context
 source $KFS_BASHRC/aliases
 

@@ -16,4 +16,4 @@ export DEFAULT='\[\e[0m\]'
 
 export PYTHON_SCRIPTS=$KFS_SETTINGS/python-scripts
 export RUN_PYTHON_SCRIPT="python2.7 $PYTHON_SCRIPTS/run_script.py"
-
+export KFS_LOCAL_SETTINGS=$KFS_SETTINGS/settings
