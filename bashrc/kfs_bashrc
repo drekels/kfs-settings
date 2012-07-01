@@ -1,0 +1,9 @@
+#!/bin/bash
+
+KFS_BASHRC=$KFS_SETTINGS/bashrc
+
+source $KFS_BASHRC/constants
+source $KFS_SETTINGS/settings
+source $KFS_BASHRC/git_context
+source $KFS_BASHRC/aliases
+

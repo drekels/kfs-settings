@@ -1,0 +1,35 @@
+
+############  ALIAS ############################################################
+
+#----GNU++----
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -l -a'
+alias grep='grep -H -n'
+alias rm='rm -r'
+
+#----MISC----
+alias brc='vim ~/.bashrc'
+alias vrc='vim ~/.vimrc'
+alias valias='vim $KFS_BASHRC/aliases'
+alias sbrc='source ~/.bashrc'
+alias home='cd ~'
+alias gref='$RUN_PYTHON_SCRIPT gref'
+alias scripts='cd ~/scripts'
+alias freefox='rm -f ~/.mozilla/firefox/wlunep9e.default/lock;rm -f ~/.mozilla/firefox/wlunep9e.default/.parentlock'
+alias freebird='rm -f ~/.thunderbird/ktuvwvpu.default/lock;rm -f ~/.thunderbird/ktuvwvpu.default/.parentlock'
+
+#----GIT----
+alias gstat='git status'
+alias gcommit='$RUN_PYTHON_SCRIPT gcommit'
+alias grollback='$RUN_PYTHON_SCRIPT grollback'
+alias gadd='git add'
+alias gco='git checkout'
+alias gpull='git pull --rebase'
+alias gpush='git push'
+alias grebase='$RUN_PYTHON_SCRIPT grebase' 
+alias gco='git checkout'
+alias glog='git log' 
+alias qpull='git pull $QUICK_PULL'
+alias gbr='git branch'
+

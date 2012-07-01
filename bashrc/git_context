@@ -1,0 +1,65 @@
+
+## Context sensitive aliases
+# make all function variables local
+# undo aliases of previous context
+# set up new context sensitive aliases
+# try not to run any non-native bash cmds... this has to execute a lot
+
+export PS1="${TITLEBAR}$ "
+
+if [ -z $USE_GIT_PP1 ] 
+then
+    __git_undo() {
+        do_nothing=do_nothing
+    }
+    __git_do() {
+        local git_br
+        read git_br < $1/.git/HEAD
+        __working_branch=${git_br##*refs/heads/}
+        [ "$git_br" == "$__working_branch" ] && __working_branch="(no branch)"
+        __working_in="${1##*/}"
+        __working_branch="[$__working_branch]"
+        __working_dir="${PWD##$1}"
+        __undo_context=__git_undo
+    }
+    __git_dir() {
+        local tmppath
+        tmppath=$PWD
+        if [ "$tmppath" == "/" ]
+        then
+            tmppath=""
+        fi
+        while [ "$tmppath" != "" ]; do
+            if [ -d "$tmppath"/.git ]  
+            then
+                if [ "$tmppath" != "/home" ]
+                then
+                    __git_do "$tmppath"
+                    return 0
+                fi
+            fi
+            [ ${tmppath##*/} == .git ] && return 1
+            tmppath=${tmppath%/*}
+        done
+        return 1
+    }
+    __other_dir() {
+        __working_in=
+        __working_branch=
+        __working_dir=
+        __undo_context=true
+    }
+    __prompt_command() {
+        $__undo_context
+        __git_dir || __other_dir  # add more as needed
+        echo -ne "\033]0;$__working_in$__working_branch$__working_dir\007"
+        if __git_dir eq 1
+        then
+            export PS1="${TITLEBAR}$YELLOW$__working_branch$DEFAULT$ "
+        else
+            export PS1="${TITLEBAR}$ "
+        fi
+    }
+    PROMPT_COMMAND=__prompt_command
+fi
+

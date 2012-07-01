@@ -1,0 +1,19 @@
+
+# ---< COLORS >---
+
+export BLACK='\[\e[0;30m\]'
+export RED='\[\e[0;31m\]'
+export GREEN='\[\e[0;32m\]'
+export YELLOW='\[\e[0;33m\]'
+export BLUE='\[\e[0;34m\]'
+export PURPLE='\[\e[0;35m\]'
+export CYAN='\[\e[0;36m\]'
+export WHITE='\[\e[0;37m\]'
+export BLACKBG='\[\e[40m\]'
+export DEFAULT='\[\e[0m\]'
+
+# ---< SYSTEM VARAIBLES >---
+
+export PYTHON_SCRIPTS=$KFS_SETTINGS/python-scripts
+export RUN_PYTHON_SCRIPT="python2.7 $PYTHON_SCRIPTS/run_script.py"
+

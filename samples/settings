@@ -1,0 +1,1 @@
+export TITLEBAR="$RED[\t]$GREEN\w$DEFAULT"
