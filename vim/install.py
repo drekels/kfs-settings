@@ -20,10 +20,10 @@ def run():
         make_backup(oldrc)
         make_backup(olddotvim)
 
-    command = "cp {source}{sep}vimrc {path}".format(source=source, sep=os.sep, path=oldrc)
+    command = "cp {source}{sep}vimrc {path}{sep}.vimrc".format(source=source, sep=os.sep, path=home)
     subprocess.check_call(command, shell=True)
 
-    command = "cp -r {source}{sep}.vim {path}".format(source=source, sep=os.sep, path=olddotvim)
+    command = "cp -r {source}{sep}.vim {path}".format(source=source, sep=os.sep, path=home)
     subprocess.check_call(command, shell=True)
 
 def make_backup(path):
