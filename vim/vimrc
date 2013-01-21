@@ -1,5 +1,3 @@
-" --- KFS VIM SETTINGS ---
-
 call pathogen#infect()
 
 function! MySys()
@@ -590,7 +588,7 @@ map <C-x> :py EvaluateCurrentRange()<cr>
 "     currentBuffer = vim.current.buffer
 "     row, col = vim.current.window.cursor
 "     currentBuffer[row:row] = [indentationLevel + "\"\"\""]
-" "     for var in reversed(variables):
+" 
 "         var = re.sub("=\w+", "", var)
 "         currentBuffer[row:row] = [indentationLevel + "    :type %s:" % var]
 "         currentBuffer[row:row] = [indentationLevel + "    :param %s:" % var]

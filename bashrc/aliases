@@ -1,4 +1,3 @@
-
 ############  ALIAS ############################################################
 
 #----GNU++----
@@ -15,9 +14,18 @@ alias valias='vim $KFS_BASHRC/aliases'
 alias sbrc='source ~/.bashrc'
 alias home='cd ~'
 alias gref='$RUN_PYTHON_SCRIPT gref'
-alias scripts='cd ~/scripts'
+alias settings='cd $KFS_SETTINGS'
 alias freefox='rm -f ~/.mozilla/firefox/wlunep9e.default/lock;rm -f ~/.mozilla/firefox/wlunep9e.default/.parentlock'
 alias freebird='rm -f ~/.thunderbird/ktuvwvpu.default/lock;rm -f ~/.thunderbird/ktuvwvpu.default/.parentlock'
+alias settings='cd ~/kfs-settings'
+alias proj='cd ~/workspace/Personal/unity/proj'
+alias preview='open -a Preview'
+
+#----SVN----
+alias svncommit='$RUN_PYTHON_SCRIPT svncommit'
+alias svnupdate='$RUN_PYTHON_SCRIPT svnupdate'
+alias svnstat='$RUN_PYTHON_SCRIPT svnstat'
+alias svnignore='svn propedit svn:ignore .'
 
 #----GIT----
 alias gstat='git status'
