@@ -13,8 +13,8 @@ class _FlagType(object):
     def error_string(self, value):
         return "must be either True or False"
 
-    def set_value(self, command, option, params):
-        setattr(command, option.lower, True)
+    def set_value(self, command, attribute, params):
+        setattr(command, attribute, True)
         return params
 
 
@@ -28,8 +28,8 @@ class _IntType(object):
     def error_string(self, value):
         return "must be an integer"
 
-    def set_value(self, command, option, params):
-        setattr(command, option.lower, int(params[0]))
+    def set_value(self, command, attribute, params):
+        setattr(command, attribute, int(params[0]))
         return params[1:]
 
 
@@ -43,11 +43,28 @@ class _StringType(object):
     def error_string(self, value):
         return "must be an string"
 
-    def set_value(self, command, option, params):
-        setattr(command, option.lower, params)
+    def set_value(self, command, attribute, params):
+        setattr(command, attribute, params[0])
         return params[1:]
+
+
+class _MultipleStringType(object):
+
+    default = []
+
+    def is_valid(self, value):
+        return isinstance(value, list) and \
+               all([isinstance(x, str) for x in value])
+
+    def error_string(self, value):
+        return "must be a list of strings"
+
+    def set_value(self, command, attribute, params):
+        setattr(command, attribute, params[:])
+        return []
 
 
 FLAG = _FlagType()
 INT = _IntType()
 STRING = _StringType()
+STRING_LIST = _MultipleStringType()

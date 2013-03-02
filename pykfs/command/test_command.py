@@ -1,10 +1,12 @@
 #!/usr/bin/python2.7
-import command
+import pykfs.command as command
 import sys
-import opt_type
-from exception import InvalidOptionException
+from pykfs.command import opt_type
+from pykfs.command.exception import InvalidOptionException
 from option import Option
 import unittest
+from mock import patch
+
 
 class FooBar(command.Command):
     options = [Option("INT", "This int option will print out when used",
@@ -27,6 +29,17 @@ class FooBar(command.Command):
     def describe(self):
         return "A test command"
 
+
+class NoOptions(command.Command):
+    options = []
+
+    def run(self):
+        self.wasrun = True
+
+    def describe(self):
+        return "A command with no options"
+
+
 class TestCommand(unittest.TestCase):
 
     def testMandatory(self):
@@ -41,10 +54,19 @@ class TestCommand(unittest.TestCase):
     def testNotMandatory(self):
         foobar = FooBar()
         foobar("-m", "1", "-n", "2")
-        print "whatever"
         self.assertTrue(foobar.wasrun)
         self.assertEqual(foobar.mandatory_int, 1)
         self.assertEqual(foobar.mandatory_positional_int, 2)
+
+    def testInvalidOptionNoPostions(self):
+        no_op = NoOptions()
+        self.assertRaisesRegexp(InvalidOptionException, "foo", no_op, "foo")
+
+    def testHelpWithOption(self):
+        no_op = NoOptions()
+        with patch.object(no_op, "get_help") as mock_help:
+            no_op("-h")
+            self.assertTrue(mock_help.called)
 
 
 if __name__ == "__main__":

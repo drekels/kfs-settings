@@ -1,15 +1,7 @@
-import option
-import opt_type
-from exception import InvalidOptionException
+from pykfs.command import option
+from pykfs.command.exception import InvalidOptionException
 import sys
 from StringIO import StringIO
-import traceback
-
-
-PARAM_MAP = {opt_type.NO_PARAMS: "_get_flag_params",
-             opt_type.ONE_PARAM: "_get_one_param",
-             opt_type.N_PARAMS: "_get_n_params",
-            }
 
 
 class Command(object):
@@ -22,30 +14,32 @@ class Command(object):
         self._mandatory = set([])
         self._options_used = set([])
         self.called_command = called_command
+        self.options.extend(self._default_options)
 
     def __call__(self, *args):
         if self.called_command:
             try:
                 self._call(*args)
             except InvalidOptionException as e:
-                    sys.stderr.write("Command Failed: {}\n".format(e.message))
-                    print self.get_help()
+                sys.stderr.write("Command Failed: {}\n".format(e.message))
+                print self.get_help()
         else:
-            self._call(*args)
+            return self._call(*args)
 
     def call(self, *args):
-        self(*args)
+        return self(*args)
 
     def get_help(self):
         helpstr = StringIO()
-        helpstr.write("Usage: {} [OPTION]...\n".format(self.called_command))
+        position_str = " ".join(["[{}]".format(o.name) for o in self._positions])
+        helpstr.write("Usage: {} {} [OPTION]...\n".format(self.name, position_str))
         helpstr.write("{}\n".format(self.describe()))
         if self.example:
             helpstr.write("{}\n".format(self.example))
         helpstr.write("\nOptions:\n")
         maxflag = max([len(option.flag) for option in self.options])
         for option in self.options:
-            helpstr.write("  {} {:<{maxflag}} {}\n".format(option.short, option.flag, option.description,
+            helpstr.write("  {:2} {:<{maxflag}} {}\n".format(option.short, option.flag, option.description,
                           maxflag=maxflag))
         return helpstr.getvalue()
 
@@ -59,7 +53,6 @@ class Command(object):
         raise NotImplementedError()
 
     def _call(self, *args):
-        self.options.extend(self._default_options)
         self._compile_options()
         self._process_arguments(args)
         if not self._mandatory.issubset(self._options_used):
@@ -67,7 +60,10 @@ class Command(object):
             for option in self._mandatory - self._options_used:
                 error += "    {}\n".format(option.flag)
             raise InvalidOptionException(error)
-        self.run()
+        if self.help:
+            print self.get_help()
+            return
+        return self.run()
 
     def _compile_options(self):
         for option in self.options:
@@ -79,24 +75,29 @@ class Command(object):
                 self._mandatory.add(option)
 
     def _process_arguments(self, args):
-        if not args:
-            return
         arglist = [arg for arg in args]
-        arg = arglist.pop(0)
+        self._positions_left = self._positions[:]
+        return self._process_arguments_recursive(arglist)
+
+    def _process_arguments_recursive(self, arglist):
+        if not arglist:
+            return
         option = None
+        arg = arglist[0]
         if arg in self._optmap:
             option = self._optmap[arg]
+            arglist.pop(0)
         else:
             try:
-                option = self._positions.pop(0)
-            except KeyError:
+                option = self._positions_left.pop(0)
+            except IndexError:
                 _raise_unknown_option(arg)
         self._options_used.add(option)
-        arglist = option.otype.set_value(self, option, arglist)
-        self._process_arguments(arglist)
+        arglist = option(self, arglist)
+        self._process_arguments_recursive(arglist)
 
     def _set_position(self, option):
-        if not option.position:
+        if None == option.position:
             return
         if isinstance(option.position, int):
             while len(self._positions) <= option.position:
@@ -108,5 +109,11 @@ class Command(object):
             except ValueError:
                 self._positions.append(option)
 
+
 def _raise_unknown_option(option):
     raise InvalidOptionException("Unknown option '{}'".format(option))
+
+
+def call_bash(command_class):
+    instance = command_class(called_command=sys.argv[0])
+    instance(*sys.argv[1:])

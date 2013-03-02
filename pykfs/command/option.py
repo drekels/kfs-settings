@@ -19,14 +19,17 @@ class Option(object):
         self.default = default
         if default == None:
             self.default = self.otype.default
-        self._validate_default
+        self._validate_default()
+        self._validate_type()
 
-    def __call__(self, command, *args):
-        self.otype.set_value(self, command, *args)
-        value = command.getattr(self.lower)
+    def __call__(self, command, params):
+        rval = self.otype.set_value(command, self.lower, params)
+
+        value = getattr(command, self.lower)
         if not self._is_valid(value):
             raise InvalidOptionException("'{}' is an invalid value for option '{}', {}".format(value, self.flag,
                                          self.error_string(value)))
+        return rval
 
     def is_valid(self, value):
         """ Defaults to only validate the option type """
@@ -43,6 +46,11 @@ class Option(object):
             raise CommandImplementationError("'{}' is an invalid default value for option '{}', {}".format(
                                              self.default, self.name, self.error_string(self.default)))
 
+    def _validate_type(self):
+        if self.otype == opt_type.FLAG and self.position != None:
+            raise CommandImplementationError("Cannot have an option that is "
+                                             "both a flag and a positional "
+                                             "argument")
 
 class HelpOption(Option):
     def __init__(self):
