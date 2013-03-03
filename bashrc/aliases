@@ -1,5 +1,11 @@
 ############  ALIAS ############################################################
 
+#----KFS-SETTINGS----
+alias valias='vim $KFS_BASHRC/aliases'
+alias vloca='vim $KFS_LOCAL_ALIASES'
+alias brc='vim $KFS_BASHRC'
+alias vrc='vim ~/.vimrc'
+
 #----GNU++----
 alias ll='ls -l'
 alias la='ls -a'
@@ -8,8 +14,6 @@ alias grep='grep -H -n'
 alias rm='rm -r'
 
 #----MISC----
-alias brc='vim ~/.bashrc'
-alias vrc='vim ~/.vimrc'
 alias valias='vim $KFS_BASHRC/aliases'
 alias sbrc='source ~/.bashrc'
 alias home='cd ~'
@@ -29,6 +33,7 @@ alias svnignore='svn propedit svn:ignore .'
 
 #----GIT----
 alias gstat='git status'
+alias gadda='git add -A'
 alias gcommit='$RUN_PYTHON_SCRIPT gcommit'
 alias grollback='$RUN_PYTHON_SCRIPT grollback'
 alias gadd='git add'

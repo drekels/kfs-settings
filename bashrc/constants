@@ -34,6 +34,8 @@ export KFS_LOCAL_SETTINGS=$KFS_SETTINGS/settings
 
 export KFS_LOCAL_ALIASES=$KFS_LOCAL_SETTINGS/local_aliases
 export KFS_BASHRC_SETTINGS=$KFS_LOCAL_SETTINGS/bashrc_settings
+export KFS_BASHRC=$KFS_SETTINGS/bashrc
+export KFS_ALIASES=$KFS_BASHRC/aliases
 
 # ---< KFS APPLICATIONS >---
 

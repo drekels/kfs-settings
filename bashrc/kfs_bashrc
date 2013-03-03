@@ -1,7 +1,5 @@
 #!/bin/bash
 
-KFS_BASHRC=$KFS_SETTINGS/bashrc
-
 function load_bashrc_component { 
 #    echo -e Loading bashrc settings from:: $ECHO_CYAN$1$ECHO_DEFAULT
     source $1
@@ -16,7 +14,7 @@ function load_local_bashrc_component {
     fi
 }
 
-load_bashrc_component $KFS_BASHRC/constants
+load_bashrc_component $KFS_SETTINGS/bashrc/constants
 load_local_bashrc_component $KFS_LOCAL_SETTINGS/bashrc_settings
 load_bashrc_component $KFS_BASHRC/git_context
 load_bashrc_component $KFS_BASHRC/aliases
