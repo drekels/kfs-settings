@@ -454,18 +454,11 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
-
-""""""""""""""""""""""""""""""
-" => Command-T
-""""""""""""""""""""""""""""""
-"let g:CommandTMaxHeight = 50
-set wildignore+=*.o,*.obj,.git,*.pyc,*.html
-"noremap <leader>j :CommandT<cr>
-"noremap <leader>y :CommandTFlush<cr>
-
 """"""""""""""""""""""""""""""
 " => ctrlp
 """"""""""""""""""""""""""""""
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=*.o,*.obj,.git,*.pyc,*.html
 let g:ctrlp_map = '<leader>j'
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0
