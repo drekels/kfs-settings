@@ -1,5 +1,3 @@
-call pathogen#infect()
-
 function! MySys()
    return "linux"
 endfunction
@@ -25,7 +23,7 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vim/vimrc<cr>
+map <leader>e :e! <C-R>=$KFS_SETTINGS<CR>/vim/vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
@@ -283,7 +281,7 @@ endtry
 """"""""""""""""""""""""""""""
 " => Statusline
 """"""""""""""""""""""""""""""
-colorscheme wombat
+colorscheme desert 
 
 " Always hide the statusline
 set laststatus=2
