@@ -4,7 +4,7 @@
 alias valias='vim $KFS_BASHRC/aliases'
 alias vloca='vim $KFS_LOCAL_ALIASES'
 alias brc='vim $KFS_BASHRC'
-alias vrc='vim ~/.vimrc'
+alias vrc='vim $KFS_SETTINGS/vim/vimrc'
 
 #----GNU++----
 alias ll='ls -l'
