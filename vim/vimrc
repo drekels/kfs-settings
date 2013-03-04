@@ -464,6 +464,7 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_open_new_file = 0
 let g:ctrlp_open_multi = 2
+
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
