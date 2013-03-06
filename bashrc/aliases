@@ -5,7 +5,8 @@ alias valias='vim $KFS_BASHRC/aliases'
 alias vloca='vim $KFS_LOCAL_ALIASES'
 alias brc='vim $KFS_BASHRC/kfs_bashrc'
 alias vrc='vim $KFS_SETTINGS/vim/vimrc'
-alias vconst='vim $KFS_BASHRC/aliases'
+alias vconst='vim $KFS_BASHRC/constants'
+alias vlocb='vim $KFS_LOCAL_SETTINGS/bashrc_settings'
 
 #----GNU++----
 alias ll='ls -l'
@@ -47,3 +48,5 @@ alias glog='git log'
 alias qpull='git pull $QUICK_PULL'
 alias gbr='git branch'
 
+#----SSH----
+alias vssh='vim ~/.ssh/config'

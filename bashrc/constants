@@ -23,19 +23,22 @@ export WHITE='\[\e[0;37m\]'
 export BLACKBG='\[\e[40m\]'
 export DEFAULT='\[\e[0m\]'
 
-# ---< SYSTEM VARAIBLES >---
-
-export PYTHON_SCRIPTS=$KFS_SETTINGS/python-scripts
-export RUN_PYTHON_SCRIPT="python2.7 $PYTHON_SCRIPTS/run_script.py"
+# ---< KFS SETTINGS >---
 export KFS_LOCAL_SETTINGS=$KFS_SETTINGS/settings
-
-
-# ---< BASHRC VARAIBLES >---
-
+export RUN_PYTHON_SCRIPT="python2.7 $PYTHON_SCRIPTS/run_script.py"
+export PYTHON_SCRIPTS=$KFS_SETTINGS/python-scripts
 export KFS_LOCAL_ALIASES=$KFS_LOCAL_SETTINGS/local_aliases
 export KFS_BASHRC_SETTINGS=$KFS_LOCAL_SETTINGS/bashrc_settings
 export KFS_BASHRC=$KFS_SETTINGS/bashrc
 export KFS_ALIASES=$KFS_BASHRC/aliases
+
+# ---< SYSTEM VARIABLES >---
+
+export VISUAL="vim"
+export EDITOR="vim"
+
+
+# ---< BASHRC VARAIBLES >---
 
 # ---< KFS APPLICATIONS >---
 
