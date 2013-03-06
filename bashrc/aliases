@@ -14,6 +14,7 @@ alias la='ls -a'
 alias lla='ls -l -a'
 alias grep='grep -H -n'
 alias rm='rm -r'
+alias tree='tree | less'
 
 #----MISC----
 alias valias='vim $KFS_BASHRC/aliases'
@@ -26,6 +27,9 @@ alias freebird='rm -f ~/.thunderbird/ktuvwvpu.default/lock;rm -f ~/.thunderbird/
 alias settings='cd ~/kfs-settings'
 alias proj='cd ~/projects/HillTribe'
 alias preview='open -a Preview'
+
+#----APACHE----
+alias vapache='sudo vim /etc/apache2/apache2.conf'
 
 #----SVN----
 alias svncommit='$RUN_PYTHON_SCRIPT svncommit'
