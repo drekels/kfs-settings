@@ -1,3 +1,6 @@
 [submodule "vim/vim_files/bundle/ctrlp.vim"]
 	path = vim/vim_files/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "pykfs"]
+	path = pykfs
+	url = git@github.com:Communist5/pykfs.git
