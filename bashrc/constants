@@ -32,6 +32,10 @@ export KFS_BASHRC_SETTINGS=$KFS_LOCAL_SETTINGS/bashrc_settings
 export KFS_BASHRC=$KFS_SETTINGS/bashrc
 export KFS_ALIASES=$KFS_BASHRC/aliases
 
+# ---< PYTHON SETTINGS >---
+export PYTHONSTARTUP=$PYTHON_SCRIPTS/startup.py
+export PYTHONHISTORY=~/.pyhist
+
 # ---< SYSTEM VARIABLES >---
 
 export VISUAL="vim"
