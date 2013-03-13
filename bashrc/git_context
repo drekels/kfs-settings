@@ -49,16 +49,34 @@ then
         __working_dir=
         __undo_context=true
     }
+    __virtualenv() {
+        __envname=""
+        if [ "$VIRTUAL_ENV" == "" ]
+        then
+            return 0
+        fi
+        IFS='/' read -ra list1 <<< "$VIRTUAL_ENV"
+        __envname=""
+        for i in "${list1[@]}"; do
+            __envname="$i"
+        done
+        return 1
+    }
     __prompt_command() {
         $__undo_context
         __git_dir || __other_dir  # add more as needed
         echo -ne "\033]0;$__working_in$__working_branch$__working_dir\007"
+        PS1="${TITLEBAR}"
         if __git_dir eq 1
         then
-            export PS1="${TITLEBAR}$YELLOW$__working_branch$DEFAULT$ "
-        else
-            export PS1="${TITLEBAR}$ "
+            PS1="$PS1$YELLOW$__working_branch$DEFAULT"
         fi
+        __virtualenv
+        if [ "$__envname" != "" ]
+        then
+            PS1="$PS1$PURPLE($__envname)$DEFAULT"
+        fi
+        export PS1="$PS1$ "
     }
     PROMPT_COMMAND=__prompt_command
 fi
