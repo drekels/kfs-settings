@@ -366,6 +366,7 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.cs :call DeleteTrailingWS()
 
 set guitablabel=%t
 
@@ -402,7 +403,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+map <leader>ss :setlocal spell spelllang=en_us<CR>
 
 "Shortcuts using <leader>
 map <leader>sn ]s
@@ -458,7 +459,7 @@ endfunction
 " => ctrlp
 """"""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*.o,*.obj,.git,*.pyc,*.html
+set wildignore+=*.o,*.obj,.git,*.pyc
 let g:ctrlp_map = '<leader>j'
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0
