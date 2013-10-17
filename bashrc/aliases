@@ -15,6 +15,7 @@ alias lla='ls -l -a'
 alias grep='grep -H -n'
 alias rm='rm -r'
 alias tree='tree | less'
+alias cp='cp -r'
 
 #----MISC----
 alias valias='vim $KFS_BASHRC/aliases'
@@ -27,6 +28,7 @@ alias freebird='rm -f ~/.thunderbird/ktuvwvpu.default/lock;rm -f ~/.thunderbird/
 alias settings='cd ~/kfs-settings'
 alias proj='cd ~/projects/HillTribe'
 alias preview='open -a Preview'
+alias view_json='$RUN_PYTHON_SCRIPT view_json'
 
 #----APACHE----
 alias vapache='sudo vim /etc/apache2/apache2.conf'
@@ -48,7 +50,7 @@ alias gpull='git pull --rebase'
 alias gpush='git push'
 alias grebase='$RUN_PYTHON_SCRIPT grebase' 
 alias gco='git checkout'
-alias glog='git log' 
+alias glog='git log  --graph --abbrev-commit --pretty="%Cblue%h %Creset%s %Cgreen[%an]%Cred%d"' 
 alias qpull='git pull $QUICK_PULL'
 alias gbr='git branch'
 

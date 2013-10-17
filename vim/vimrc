@@ -74,8 +74,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,6 +112,12 @@ set ai "Auto indent
 set si "Smart indet
 set wrap "Wrap lines
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Macros
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <leader>m :<C-M>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -365,7 +369,6 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.cs :call DeleteTrailingWS()
 
 set guitablabel=%t
@@ -430,6 +433,12 @@ au FileType python map <buffer> <leader>2 /def
 au FileType python map <buffer> <leader>C ?class
 au FileType python map <buffer> <leader>D ?def
 
+autocmd BufWrite *.py :call DeleteTrailingWS()
+
+" Cmd line mac vim doesn't have +python, so this is necessary
+if !has('python')
+    let b:did_pyflakes_plugin=1
+endif
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -459,12 +468,16 @@ endfunction
 " => ctrlp
 """"""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,*.pyc,*.prefab,*.meta,*.mat,*.png,*.jpg,*.guiskin,*.ttf,*.unity
 let g:ctrlp_map = '<leader>j'
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_open_new_file = 0
 let g:ctrlp_open_multi = 2
+
+""""""""""""""""""""""""""""""
+" => pyflakes
+""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -516,14 +529,21 @@ command! -nargs=1 Silent
 " map <leader>m :make<cr>
 map <leader>m :Silent make<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" macros
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" map <leader>m to do its the m macro for fast macroing
+map <leader>m @m
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer.py<cr>
-au BufRead,BufNewFile ~/buffer.py iab <buffer> xh1 ===========================================
+" map <leader>q :e ~/buffer.py<cr>
+" au BufRead,BufNewFile ~/"buffer.py iab <buffer> xh1 ===========================================
+map <leader>q lbi"<ESC>ea"
 
 map <leader>pp :setlocal paste!<cr>
 
