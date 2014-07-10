@@ -26,14 +26,13 @@ export DEFAULT='\[\e[0m\]'
 # ---< KFS SETTINGS >---
 export KFS_LOCAL_SETTINGS=$KFS_SETTINGS/settings
 export PYTHON_SCRIPTS=$KFS_SETTINGS/python-scripts
-export RUN_PYTHON_SCRIPT="python2.7 $PYTHON_SCRIPTS/run_script.py"
 export KFS_LOCAL_ALIASES=$KFS_LOCAL_SETTINGS/local_aliases
 export KFS_BASHRC_SETTINGS=$KFS_LOCAL_SETTINGS/bashrc_settings
 export KFS_BASHRC=$KFS_SETTINGS/bashrc
 export KFS_ALIASES=$KFS_BASHRC/aliases
 
 # ---< PYTHON SETTINGS >---
-export PYTHONSTARTUP=$PYTHON_SCRIPTS/startup.py
+export PYTHONSTARTUP=$KFS_SETTINGS/python_shell.py
 export PYTHONHISTORY=~/.pyhist
 
 # ---< SYSTEM VARIABLES >---
