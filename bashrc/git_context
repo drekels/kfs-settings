@@ -38,7 +38,7 @@ then
                     return 0
                 fi
             fi
-            [ ${tmppath##*/} == .git ] && return 1
+            [ "${tmppath##*/}" == .git ] && return 1
             tmppath=${tmppath%/*}
         done
         return 1
