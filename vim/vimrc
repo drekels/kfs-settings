@@ -367,6 +367,7 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
+map <leader>l :call DeleteTrailingWS()<return>
 autocmd BufWrite *.cs :call DeleteTrailingWS()
 
 set guitablabel=%t

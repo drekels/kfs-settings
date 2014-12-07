@@ -25,7 +25,6 @@ alias settings='cd $KFS_SETTINGS'
 alias freefox='rm -f ~/.mozilla/firefox/wlunep9e.default/lock;rm -f ~/.mozilla/firefox/wlunep9e.default/.parentlock'
 alias freebird='rm -f ~/.thunderbird/ktuvwvpu.default/lock;rm -f ~/.thunderbird/ktuvwvpu.default/.parentlock'
 alias settings='cd ~/kfs-settings'
-alias proj='cd ~/projects/HillTribe'
 alias preview='open -a Preview'
 
 #----APACHE----

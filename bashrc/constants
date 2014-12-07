@@ -1,27 +1,27 @@
 
 # ---< COLORS >---
 
-export ECHO_BLACK='\033[30m'
-export ECHO_RED='\033[31m'
-export ECHO_GREEN='\033[32m'
-export ECHO_YELLOW='\033[33m'
-export ECHO_BLUE='\033[34m'
-export ECHO_PURPLE='\033[35m'
-export ECHO_CYAN='\033[36m'
-export ECHO_WHITE='\033[37m'
-export ECHO_BLACKBG='\033[40m'
-export ECHO_DEFAULT='\033[0m'
+export DEFAULT='\033[0m'
 
-export BLACK='\[\e[0;30m\]'
-export RED='\[\e[0;31m\]'
-export GREEN='\[\e[0;32m\]'
-export YELLOW='\[\e[0;33m\]'
-export BLUE='\[\e[0;34m\]'
-export PURPLE='\[\e[0;35m\]'
-export CYAN='\[\e[0;36m\]'
-export WHITE='\[\e[0;37m\]'
-export BLACKBG='\[\e[40m\]'
-export DEFAULT='\[\e[0m\]'
+export BLACK='\033[0;30m'
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[0;33m'
+export BLUE='\033[0;34m'
+export PURPLE='\033[0;35m'
+export CYAN='\033[0;36m'
+export WHITE='\033[0;37m'
+
+export BOLD='\033[1;0m'
+export BLACK_BOLD='\033[1;30m'
+export RED_BOLD='\033[1;31m'
+export GREEN_BOLD='\033[1;32m'
+export YELLOW_BOLD='\033[1;33m'
+export BLUE_BOLD='\033[1;34m'
+export PURPLE_BOLD='\033[1;35m'
+export CYAN_BOLD='\033[1;36m'
+export WHITE_BOLD='\033[1;37m'
+
 
 # ---< KFS SETTINGS >---
 export KFS_LOCAL_SETTINGS=$KFS_SETTINGS/settings
