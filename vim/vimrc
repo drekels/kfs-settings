@@ -28,7 +28,12 @@ nmap <leader>w :w!<cr>
 map <leader>e :e! <C-R>=$KFS_SETTINGS<CR>/vim/vimrc<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vimrc
+if has("unix")
+    autocmd! bufwritepost vimrc source $KFS_SETTINGS/vim/vimrc
+else
+    autocmd! bufwritepost vimrc source $KFS_SETTINGS\vim\vimrc
+endif
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -380,6 +385,10 @@ imap <C-B> <ESC><C-B>
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
+" Fast copy/paste to '*' clipboard
+map <leader>y "*y
+map <leader>p "*p
+
 " Set 256 colors for gnome terminal
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
@@ -542,7 +551,7 @@ map <leader>m :Silent make<cr>
 "Quickly open a buffer for scripbble
 " map <leader>q :e ~/buffer.py<cr>
 " au BufRead,BufNewFile ~/"buffer.py iab <buffer> xh1 ===========================================
-map <leader>q lbi"<ESC>ea"
+map <leader>q :q
 
 map <leader>pp :setlocal paste!<cr>
 
