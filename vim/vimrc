@@ -28,11 +28,7 @@ nmap <leader>w :w!<cr>
 map <leader>e :e! <C-R>=$KFS_SETTINGS<CR>/vim/vimrc<cr>
 
 " When vimrc is edited, reload it
-if has("unix")
-    autocmd! bufwritepost vimrc source $KFS_SETTINGS/vim/vimrc
-else
-    autocmd! bufwritepost vimrc source $KFS_SETTINGS\vim\vimrc
-endif
+autocmd! bufwritepost vimrc source $KFS_SETTINGS/vim/vimrc
 
 
 
@@ -403,9 +399,9 @@ autocmd BufEnter * let &titlestring = "[" . expand("%:t") . "]"
 " => Cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>cc :botright cope<cr>
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+" map <leader>cc :botright cope<cr>
+" map <leader>n :cn<cr>
+" map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
