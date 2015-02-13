@@ -44,3 +44,10 @@ alias gbr='git branch'
 
 #----SSH----
 alias vssh='vim ~/.ssh/config'
+
+#----WINDOWS----
+runname=`uname -o`
+if [ $runname == "Cygwin" ]
+    then
+        alias gref='/cygdrive/c/Python27/python C:\Python27\Scripts\gref'
+fi

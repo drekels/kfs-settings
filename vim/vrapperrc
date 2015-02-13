@@ -1,0 +1,144 @@
+" Fast saving
+nmap ,w :w!<cr>
+
+" Set 7 lines to the curors - when moving vertical..
+set so=7
+
+set number
+
+set cursorline
+
+" Set backspace config
+
+set ignorecase "Ignore case when searching
+set smartcase
+
+set hlsearch "Highlight search things
+
+set incsearch "Make search act like search in modern browsers
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
+set tw=500
+
+set ai "Auto indent
+set si "Smart indet
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Macros
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map ,m @m
+imap <c-a> <esc>$a{<cr>}<esc>ko
+nmap <c-a> $a{<cr>}<esc>ko
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+"  In visual mode when you press * or # to search for the current selection
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+
+" When you press gv you vimgrep after the selected text
+vnoremap <silent> gv :call VisualSelection('gv')<CR>
+
+" When you press ,r you can search and replace the selected text
+vnoremap <silent> ,r :call VisualSelection('replace')<CR>
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction 
+
+
+function! VisualSelection(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+"Visual Shifting
+vnoremap < <gv
+vnoremap > >gv
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Command mode related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Useful on some European keyboards
+map ½ $
+imap ½ $
+vmap ½ $
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smart way to move btw. windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Use the arrows to something usefull
+map <silent><right> :bn<cr>
+map <silent><left> :bp<cr>
+
+function! CurDir()
+    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+    return curdir
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    else
+        return ''
+    endif
+endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Parenthesis/bracket expanding
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Delete trailing white space, useful for Python ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+" Toggle line numbers and fold column for easy copying:
+nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Pressing ,ss will toggle and untoggle spell checking
+map ,ss :setlocal spell spelllang=en_us<CR>

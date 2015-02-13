@@ -478,7 +478,7 @@ endfunction
 " => ctrlp
 """"""""""""""""""""""""""""""
 " set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*.o,*.obj,.git,*.pyc,*.prefab,*.meta,*.mat,*.png,*.jpg,*.guiskin,*.ttf,*.unity
+set wildignore+=*.o,*.obj,.git,*.pyc,*.prefab,*.meta,*.mat,*.png,*.jpg,*.guiskin,*.ttf,*.unity,*.class
 let g:ctrlp_map = '<leader>j'
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0
