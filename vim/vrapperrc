@@ -35,8 +35,8 @@ set si "Smart indet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map ,m @m
-imap <c-a> <esc>$a{<cr>}<esc>ko
-nmap <c-a> $a{<cr>}<esc>ko
+imap <c-a> <esc>$a{<cr><space><space>
+nmap <c-a> $a{<cr><space><space>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
