@@ -84,10 +84,10 @@ set tm=500
 colorscheme desert 
 syntax enable "Enable syntax hl
 
-highlight OverEighty ctermbg=yellow ctermfg=white guibg=#42422D
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-2match OverEighty /\%80v.\+/
-match OverLength /\%100v.\+/
+"highlight OverEighty ctermbg=yellow ctermfg=white guibg=#42422D
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"2match OverEighty /\%80v.\+/
+"match OverLength /\%100v.\+/
 
 set encoding=utf8
 

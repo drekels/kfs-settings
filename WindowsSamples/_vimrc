@@ -1,0 +1,6 @@
+"Place this in home directory
+
+source ~\kfs-settings\vim\vim_files\autoload\pathogen.vim
+source ~\kfs-settings\vim\vimrc
+" colorscheme github
+au GUIEnter * simalt ~x
